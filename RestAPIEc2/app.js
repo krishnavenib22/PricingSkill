@@ -4,7 +4,7 @@ var tickerDict = {};
 
 function getPrice (tickerName, response) {
   
-  var tickerSymbol = tickerDict[tickerName];
+  var tickerSymbol = tickerDict[tickerName.toLowerCase()];
   var string = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=' + tickerSymbol + '&apikey=73W2LCVLLF04XLIH';  
   
   
@@ -34,7 +34,10 @@ var csv = require('fast-csv');
 
 csv.fromPath('companylist.csv',{ 'headers': true })
 .on('data', function(record) {
-  tickerDict[record.Name]=record.Symbol;
+  var stockName = record.Name;
+  var stockName2 = stockName.replace(/[^a-zA-Z 0-9]+/g,'');
+  var stockName3 = stockName2.replace('.','');
+  tickerDict[stockName3.toLowerCase()]=record.Symbol;
 });
     
 
