@@ -6,7 +6,7 @@ var Alexa = require('alexa-sdk');
 
 var http = require('http');
 
-const APP_ID='amzn1.ask.skill.0f47dcbe-316b-46fb-b807-731c0634e69a';
+const APP_ID='amzn1.ask.skill.51022001-3a13-45c0-a78c-ee1109ff2824';
 
 const languageStrings = {
 
@@ -32,7 +32,7 @@ const languageStrings = {
 function GetPrice(stockTicker, date, callback){
           
 
-        var string = 'http://ec2-52-201-245-37.compute-1.amazonaws.com/pricing?ticker='+ stockTicker;   
+        var string = 'http://ec2-52-90-97-81.compute-1.amazonaws.com/pricing?ticker='+ stockTicker;   
 
         var req = http.get(string, res => {
 
