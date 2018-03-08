@@ -4,10 +4,13 @@ var tickerDict = {};
 
 function getPrice (tickerName, response) {
   
+  console.log('Received price request for : ' + tickerName);
   var tickerSymbol = tickerDict[tickerName.toLowerCase()];
   var string = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=' + tickerSymbol + '&apikey=73W2LCVLLF04XLIH';  
   
-  
+  if(typeof tickerSymbol ==="undefined"){
+    string = 'https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=GOOGL&apikey=73W2LCVLLF04XLIH';
+  }
   var req = https.get(string, res => {
 
     var returnData= " ";
